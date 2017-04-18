@@ -1,9 +1,11 @@
 node {
-  stage('CC') {
-    checkout scm
-  }
-
-  stage('Test') {
-    echo "Brunch name is ${env.BRANCH_NAME}"
-  }
+  stage 'Node Check'
+  sh 'hostname -i'
+  sh 'whoami'
 }
+
+node('jdc-slave') {
+  stage 'Node check'
+  sh 'hostname -i'
+  sh 'whoami'
+} 
